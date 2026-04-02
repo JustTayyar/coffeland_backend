@@ -80,4 +80,13 @@ Route::prefix('admin')->middleware(['auth:sanctum'])->group(function () {
     });
 });
 
+Route::get('/run-seed', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'ProductionSeeder', '--force' => true]);
+        return response()->json(['message' => 'Seeded successfully'], 200);
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()], 500);
+    }
+});
+
 
