@@ -32,8 +32,8 @@ return new class extends Migration
         }
 
         // Copy existing data safely
-        \Illuminate\Support\Facades\DB::statement('UPDATE products SET name_az = name WHERE name_az IS NULL OR name_az = ""');
-        \Illuminate\Support\Facades\DB::statement('UPDATE products SET description_az = description WHERE description_az IS NULL OR description_az = ""');
+        \Illuminate\Support\Facades\DB::statement("UPDATE products SET name_az = name WHERE name_az IS NULL OR name_az = ''");
+        \Illuminate\Support\Facades\DB::statement("UPDATE products SET description_az = description WHERE description_az IS NULL OR description_az = ''");
     }
 
     /**
