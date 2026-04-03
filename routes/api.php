@@ -12,7 +12,7 @@ use App\Http\Controllers\Api\Admin\DashboardController;
 use App\Http\Controllers\Api\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Api\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Api\Admin\CustomerController as AdminCustomerController;
-use App\Http\Controllers\Api\Admin\CMSController as AdminCMSController;
+
 use App\Http\Controllers\Api\AdminAuthController;
 
 // Auth routes
@@ -25,7 +25,7 @@ Route::post('/admin/register-staff', [AdminAuthController::class, 'registerStaff
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/blogs', [BlogController::class, 'index']);
 Route::get('/blogs/{id}', [BlogController::class, 'show']);
-Route::get('/public-cms', [App\Http\Controllers\Api\Admin\CMSController::class, 'index']);
+
 
 Route::get('/orders', [OrderController::class, 'userOrders']);
 Route::post('/orders', [OrderController::class, 'store']);
@@ -72,11 +72,7 @@ Route::prefix('admin')->middleware(['auth:sanctum'])->group(function () {
         // Ingredients (Anbar)
         Route::apiResource('/ingredients', \App\Http\Controllers\Api\Admin\IngredientController::class);
 
-        // CMS
-        Route::get('/cms', [AdminCMSController::class, 'index']);
-        Route::post('/cms', [AdminCMSController::class, 'store']);
-        Route::put('/cms/{id}', [AdminCMSController::class, 'update']);
-        Route::delete('/cms/{id}', [AdminCMSController::class, 'destroy']);
+
     });
 });
 
